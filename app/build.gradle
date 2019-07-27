@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.apollographql.android'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.githubgraphqlapi"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    // Design library
+    implementation rootProject.libs.appcompat
+    implementation rootProject.libs.material
+    implementation rootProject.libs.supportV4
+
+    // RecyclerView
+    api rootProject.libs.recyclerview
+    
+    implementation rootProject.libs.gson
+    implementation rootProject.libs.gsonConverter
+
+    implementation rootProject.libs.dagger
+    kapt rootProject.libs.daggerCompiler
+    compileOnly rootProject.libs.jsrAnnotation
+
+    // Kotlin
+    implementation rootProject.libs.kotlinStdlibJdk7
+    implementation rootProject.libs.kotlinReflect
+
+    implementation rootProject.libs.apolloRuntime
+    implementation rootProject.libs.apolloRx2Support
+
+    //EventBus
+    implementation rootProject.libs.eventbus
+
+    // RxJava
+    implementation rootProject.libs.rxjava
+    implementation rootProject.libs.rxandroid
+
+    // Constraint Layout
+    implementation rootProject.libs.constraintLayout
+}

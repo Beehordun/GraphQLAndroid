@@ -1,0 +1,9 @@
+query JobsQuery {
+     jobs {
+         id
+         title
+         remotes {
+             type
+         }
+     }
+}
