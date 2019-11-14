@@ -31,18 +31,19 @@ dependencies {
 
     // RecyclerView
     api rootProject.libs.recyclerview
-    
-    implementation rootProject.libs.gson
-    implementation rootProject.libs.gsonConverter
 
+    //Dagger
     implementation rootProject.libs.dagger
     kapt rootProject.libs.daggerCompiler
     compileOnly rootProject.libs.jsrAnnotation
 
     // Kotlin
     implementation rootProject.libs.kotlinStdlibJdk7
-    implementation rootProject.libs.kotlinReflect
 
+    //Okhttp
+    implementation rootProject.libs.okhttp
+
+    //Apollo
     implementation rootProject.libs.apolloRuntime
     implementation rootProject.libs.apolloRx2Support
 

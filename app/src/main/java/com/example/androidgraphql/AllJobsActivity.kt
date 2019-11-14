@@ -1,9 +1,8 @@
 package com.example.androidgraphql
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.androidgraphql.di.AppComponent
+import com.example.androidgraphql.model.AllJobs
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -44,7 +43,6 @@ class AllJobsActivity : BaseActivity(), AllJobsMvpView{
     }
 
     override fun refreshView(allJobs: List<AllJobs>) {
-        println("Called ---> ${allJobs.size}")
         jobsList.clear()
         jobsList.addAll(allJobs)
         adapter.notifyDataSetChanged()

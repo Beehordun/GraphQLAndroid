@@ -26,7 +26,7 @@
             android:textStyle="italic"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"
-            android:text="Remote"
+            android:text="@string/remote"
    />
 
     <View

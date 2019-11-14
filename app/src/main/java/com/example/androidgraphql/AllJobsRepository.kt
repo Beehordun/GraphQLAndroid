@@ -3,11 +3,12 @@ package com.example.androidgraphql
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx2.Rx2Apollo
+import com.example.androidgraphql.model.AllJobs
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class AllJobsRepository @Inject internal constructor(val bus: Bus, val apolloClient: ApolloClient) {
+class AllJobsRepository @Inject internal constructor(val bus: Bus, private val apolloClient: ApolloClient) {
 
     fun getALLJobs() {
         Rx2Apollo.from(apolloClient.query(JobsQuery()))
@@ -28,26 +29,22 @@ class AllJobsRepository @Inject internal constructor(val bus: Bus, val apolloCli
     }
 
     private fun handleErrorResponse(error: Throwable) {
+        error.printStackTrace()
     }
 
     private fun JobsQuery.Data.toObject(): List<AllJobs> {
         val source = this
-        val size = source.jobs.size
         val allJobs: MutableList<AllJobs> = mutableListOf()
 
-        for (i in 0 until size) {
-            val job = source.jobs[i]
-            val id = job.id
-            val title = job.title
+        for (job in source.jobs) {
             var type: String? = null
+
             if (job.remotes.isNullOrEmpty().not()) {
                 type = job.remotes?.get(0)?.type
             }
-
-            allJobs.add(AllJobs(id, title, type))
+            allJobs.add(AllJobs(job.id, job.title, type))
         }
 
         return allJobs
     }
-
 }

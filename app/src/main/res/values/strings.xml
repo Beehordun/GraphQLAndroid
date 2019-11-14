@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidGraphQL</string>
+    <string name="remote">Remote</string>
 </resources>

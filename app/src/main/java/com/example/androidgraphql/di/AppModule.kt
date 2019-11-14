@@ -20,11 +20,11 @@ class AppModule {
     @Provides
     @Reusable
     internal fun provideOkHttp(): OkHttpClient {
-        val builder = OkHttpClient.Builder()
+        return OkHttpClient.Builder()
             .connectTimeout(TIMEOUT.toLong(), TimeUnit.MINUTES)
             .readTimeout(TIMEOUT.toLong(), TimeUnit.MINUTES)
             .writeTimeout(TIMEOUT.toLong(), TimeUnit.MINUTES)
-        return builder.build()
+            .build()
     }
 
     @Provides

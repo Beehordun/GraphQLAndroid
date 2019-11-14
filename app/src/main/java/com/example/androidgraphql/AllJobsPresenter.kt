@@ -4,7 +4,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
 
-class AllJobsPresenter @Inject internal constructor(val allJobsRepository: AllJobsRepository, val bus: Bus) {
+class AllJobsPresenter @Inject internal constructor(private val allJobsRepository: AllJobsRepository, val bus: Bus) {
 
     private var  allJobsView: AllJobsMvpView? = null
 
@@ -24,7 +24,6 @@ class AllJobsPresenter @Inject internal constructor(val allJobsRepository: AllJo
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onGetALLJobsSuccessfulEvent(event: Events.GetJobsSuccessfulEvent) {
-        println("Called ----> received success event")
         allJobsView?.refreshView(event.allJobs)
     }
 }
